@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  postgres_dw:
+    image: postgres:15
+    container_name: imdb_postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: warehouse
+    ports: ["5433:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow -d warehouse"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  airflow:
+    image: apache/airflow:2.9.2
+    container_name: imdb_airflow
+    depends_on:
+      postgres_dw:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/airflow.db
+      AIRFLOW_CONN_WAREHOUSE: >-
+        postgres://airflow:airflow@postgres_dw:5432/warehouse
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./data:/opt/airflow/data
+      - ./requirements.txt:/requirements.txt
+    command: >
+      bash -lc "
+        pip install -r /requirements.txt &&
+        airflow db init &&
+        airflow users create --username admin --firstname a --lastname b --role Admin --email a@b.com --password admin &&
+        airflow webserver & airflow scheduler
+      "
+    ports: ["8080:8080"]
+
+volumes:
+  pgdata:
+

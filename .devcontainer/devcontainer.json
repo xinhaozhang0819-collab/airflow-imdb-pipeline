@@ -1,0 +1,11 @@
+{
+  "name": "airflow-imdb-pipeline",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "airflow",
+  "workspaceFolder": "/opt/airflow",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-azuretools.vscode-docker"]
+    }
+  }
+}
