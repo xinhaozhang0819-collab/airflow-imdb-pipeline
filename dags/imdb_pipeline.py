@@ -1,159 +1,103 @@
+from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
-from airflow.utils.task_group import TaskGroup
-from datetime import datetime, timedelta
 import pandas as pd
-from sqlalchemy import create_engine
-import os, gzip, shutil, urllib.request
+import sqlalchemy
 
-DATA_DIR = "/opt/airflow/data"
-RAW = f"{DATA_DIR}/raw"
-PROC = f"{DATA_DIR}/processed"
-OUT = f"{DATA_DIR}/outputs"
+# ---------- CONFIG ----------
+DB_CONN = "postgresql+psycopg2://airflow:airflow@postgres_dw:5432/warehouse"
+MOVIE_PATH = "/opt/airflow/data/movies.csv"
+RATING_PATH = "/opt/airflow/data/ratings.csv"
+MERGED_PATH = "/opt/airflow/data/merged.csv"
 
-default_args = dict(retries=1, retry_delay=timedelta(minutes=2))
+default_args = {
+    "owner": "airflow",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
+}
 
-def _ensure_dirs():
-    for p in [RAW, PROC, OUT]:
-        os.makedirs(p, exist_ok=True)
+# ---------- TASK FUNCTIONS ----------
+def ingest_movies(ti=None):
+    """Read movies.csv and push shape via XCom."""
+    df = pd.read_csv(MOVIE_PATH)
+    df = df[["movieId", "title", "genres"]]
+    if ti:
+        ti.xcom_push(key="movies_shape", value=df.shape)
+    return df.to_json()
 
-def download(url: str, out_path: str) -> str:
-    """下载并（若需要）解压，返回文件路径（仅通过 XCom 传‘路径’）"""
-    _ensure_dirs()
-    tmp = out_path + (".gz" if url.endswith(".gz") else ".tmp")
-    urllib.request.urlretrieve(url, tmp)
-    if tmp.endswith(".gz"):
-        with gzip.open(tmp, "rb") as fin, open(out_path, "wb") as fout:
-            shutil.copyfileobj(fin, fout)
-        os.remove(tmp)
-    else:
-        os.rename(tmp, out_path)
-    return out_path
+def ingest_ratings(ti=None):
+    """Read ratings.csv and push shape via XCom."""
+    df = pd.read_csv(RATING_PATH)
+    df = df[["userId", "movieId", "rating"]]
+    if ti:
+        ti.xcom_push(key="ratings_shape", value=df.shape)
+    return df.to_json()
 
-def transform_basics(in_path: str, out_path: str) -> str:
-    df = pd.read_csv(in_path, sep="\t", na_values="\\N", low_memory=False)
-    df = df[df["titleType"].isin(["movie","tvMovie"])][
-        ["tconst","primaryTitle","startYear","runtimeMinutes","genres"]
-    ]
-    df.to_csv(out_path, index=False)
-    return out_path
+def transform_merge(ti=None):
+    """Merge movies & ratings on movieId and write merged.csv."""
+    import json
+    movies = pd.read_json(ti.xcom_pull(task_ids="ingest_movies"))
+    ratings = pd.read_json(ti.xcom_pull(task_ids="ingest_ratings"))
+    merged = pd.merge(ratings, movies, on="movieId", how="inner")
+    merged.to_csv(MERGED_PATH, index=False)
+    if ti:
+        ti.xcom_push(key="merged_rows", value=len(merged))
 
-def transform_ratings(in_path: str, out_path: str) -> str:
-    df = pd.read_csv(in_path, sep="\t", na_values="\\N", low_memory=False)
-    df = df.rename(columns={"averageRating":"rating","numVotes":"votes"})
-    df.to_csv(out_path, index=False)
-    return out_path
+def load_to_postgres(ti=None):
+    """Load merged.csv into Postgres table imdb_merged."""
+    engine = sqlalchemy.create_engine(DB_CONN)
+    df = pd.read_csv(MERGED_PATH)
+    df.to_sql("imdb_merged", engine, if_exists="replace", index=False)
 
-def merge_and_load(basics_path: str, ratings_path: str, table: str) -> None:
-    engine = create_engine("postgresql+psycopg2://airflow:airflow@postgres_dw:5432/warehouse")
-    b = pd.read_csv(basics_path)
-    r = pd.read_csv(ratings_path)
-    m = b.merge(r, on="tconst", how="inner")
-    m.to_sql(table, engine, if_exists="replace", index=False)
-
-    # 简单分析：每年平均评分（限制 votes>10k 以稳定）
-    top = (
-        m[m["votes"] > 10000]
-        .assign(year=pd.to_numeric(m["startYear"], errors="coerce"))
-        .dropna(subset=["year"])
-        .groupby("year")["rating"].mean()
+def analyze(ti=None):
+    """Simple analysis: top 5 titles by average rating (printed to logs)."""
+    engine = sqlalchemy.create_engine(DB_CONN)
+    df = pd.read_sql("SELECT * FROM imdb_merged", engine)
+    summary = (
+        df.groupby("title")["rating"]
+        .mean()
         .reset_index()
-        .sort_values("year")
+        .sort_values("rating", ascending=False)
     )
-    ax = top.plot(x="year", y="rating", title="Avg rating by year (votes>10k)")
-    fig = ax.get_figure()
-    fig.savefig(f"{OUT}/avg_rating_by_year.png")
-    fig.clf()
+    top5 = summary.head(5)
+    print("Top 5 rated movies:\n", top5)
+    if ti:
+        ti.xcom_push(key="top5", value=top5.to_dict())
 
+# ---------- DAG ----------
 with DAG(
-    dag_id="imdb_etl",
-    start_date=datetime(2024, 1, 1),
-    schedule_interval="@daily",
-    catchup=False,
-    max_active_runs=1,
+    dag_id="imdb_pipeline",
     default_args=default_args,
-    tags=["imdb","parallel","etl"],
+    description="ETL pipeline for IMDB-like dataset (local CSVs)",
+    schedule_interval="@daily",
+    start_date=datetime(2025, 11, 1),
+    catchup=False,
+    tags=["imdb", "etl", "postgres"],
 ) as dag:
 
-    make_dirs = PythonOperator(
-        task_id="make_dirs",
-        python_callable=_ensure_dirs
+    ingest_movies_task = PythonOperator(
+        task_id="ingest_movies",
+        python_callable=ingest_movies,
     )
 
-    # --- 提取（并行下载） ---
-    with TaskGroup("extract", tooltip="parallel downloads"):
-        dl_basics = PythonOperator(
-            task_id="download_basics",
-            python_callable=download,
-            op_kwargs={
-                "url": "https://datasets.imdbws.com/title.basics.tsv.gz",
-                "out_path": f"{RAW}/title.basics.tsv",
-            },
-        )
-        dl_ratings = PythonOperator(
-            task_id="download_ratings",
-            python_callable=download,
-            op_kwargs={
-                "url": "https://datasets.imdbws.com/title.ratings.tsv.gz",
-                "out_path": f"{RAW}/title.ratings.tsv",
-            },
-        )
-
-    # --- 转换（并行清洗） ---
-    with TaskGroup("transform", tooltip="clean separately"):
-        tf_basics = PythonOperator(
-            task_id="transform_basics",
-            python_callable=transform_basics,
-            op_kwargs={
-                "in_path": f"{RAW}/title.basics.tsv",
-                "out_path": f"{PROC}/basics.csv",
-            },
-        )
-        tf_ratings = PythonOperator(
-            task_id="transform_ratings",
-            python_callable=transform_ratings,
-            op_kwargs={
-                "in_path": f"{RAW}/title.ratings.tsv",
-                "out_path": f"{PROC}/ratings.csv",
-            },
-        )
-
-    # --- 建表（或确保存在） ---
-    create_table = PostgresOperator(
-        task_id="create_table",
-        postgres_conn_id="warehouse",
-        sql="""
-        CREATE TABLE IF NOT EXISTS imdb_titles (
-          tconst TEXT PRIMARY KEY,
-          primaryTitle TEXT,
-          startYear TEXT,
-          runtimeMinutes TEXT,
-          genres TEXT,
-          rating FLOAT,
-          votes INT
-        );
-        """,
+    ingest_ratings_task = PythonOperator(
+        task_id="ingest_ratings",
+        python_callable=ingest_ratings,
     )
 
-    # --- 合并 + 落库 + 简单分析图 ---
-    merge_load = PythonOperator(
-        task_id="merge_and_load",
-        python_callable=merge_and_load,
-        op_kwargs={
-            "basics_path": f"{PROC}/basics.csv",
-            "ratings_path": f"{PROC}/ratings.csv",
-            "table": "imdb_titles",
-        },
+    transform_merge_task = PythonOperator(
+        task_id="transform_merge",
+        python_callable=transform_merge,
     )
 
-    # --- 清理中间产物 ---
-    cleanup = BashOperator(
-        task_id="cleanup_intermediate",
-        bash_command=f"rm -f {RAW}/* {PROC}/* || true",
+    load_task = PythonOperator(
+        task_id="load_to_postgres",
+        python_callable=load_to_postgres,
     )
 
-    make_dirs >> [dl_basics, dl_ratings]
-    [dl_basics, dl_ratings] >> [tf_basics, tf_ratings]
-    [tf_basics, tf_ratings] >> create_table >> merge_load >> cleanup
+    analyze_task = PythonOperator(
+        task_id="analyze",
+        python_callable=analyze,
+    )
+
+    [ingest_movies_task, ingest_ratings_task] >> transform_merge_task >> load_task >> analyze_task

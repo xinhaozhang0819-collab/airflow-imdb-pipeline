@@ -1,4 +1,6 @@
 pandas
-sqlalchemy
+sqlalchemy>=1.4
 psycopg2-binary
 pendulum
+matplotlib
+apache-airflow-providers-postgres
