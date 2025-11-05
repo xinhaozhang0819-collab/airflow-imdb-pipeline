@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   postgres_dw:
     image: postgres:15
@@ -8,7 +6,8 @@ services:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: warehouse
-    ports: ["5433:5432"]
+    ports:
+      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U airflow -d warehouse"]
       interval: 5s
@@ -19,29 +18,34 @@ services:
 
   airflow:
     image: apache/airflow:2.9.2
-    container_name: imdb_airflow
+    container_name: airflow
+    restart: always
     depends_on:
       postgres_dw:
         condition: service_healthy
     environment:
-      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/airflow.db
-      AIRFLOW_CONN_WAREHOUSE: >-
-        postgres://airflow:airflow@postgres_dw:5432/warehouse
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres_dw:5432/warehouse
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE=UTC
+      - _AIRFLOW_WWW_USER_USERNAME=airflow
+      - _AIRFLOW_WWW_USER_PASSWORD=airflow
+      - AIRFLOW_CONN_WAREHOUSE=postgresql+psycopg2://airflow:airflow@postgres_dw:5432/warehouse
+    ports:
+      - "8080:8080"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./data:/opt/airflow/data
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
       - ./requirements.txt:/requirements.txt
     command: >
       bash -lc "
-        pip install -r /requirements.txt &&
+        pip install -r /requirements.txt || true &&
         airflow db init &&
-        airflow users create --username admin --firstname a --lastname b --role Admin --email a@b.com --password admin &&
+        airflow users create --username airflow --firstname a --lastname b --role Admin --email a@b.com --password airflow || true &&
         airflow webserver & airflow scheduler
       "
-    ports: ["8080:8080"]
 
 volumes:
-  pgdata:
-
+  pgdata: {}
