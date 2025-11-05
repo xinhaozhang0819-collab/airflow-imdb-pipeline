@@ -1,0 +1,18 @@
+[2025-11-05T03:53:05.281+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-05T03:53:05.310+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: imdb_pipeline.ingest_movies scheduled__2025-11-04T00:00:00+00:00 [queued]>
+[2025-11-05T03:53:05.316+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: imdb_pipeline.ingest_movies scheduled__2025-11-04T00:00:00+00:00 [queued]>
+[2025-11-05T03:53:05.317+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-11-05T03:53:05.326+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): ingest_movies> on 2025-11-04 00:00:00+00:00
+[2025-11-05T03:53:05.334+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'imdb_pipeline', 'ingest_movies', 'scheduled__2025-11-04T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/imdb_pipeline.py', '--cfg-path', '/tmp/tmpb2yecmzq']
+[2025-11-05T03:53:05.338+0000] {standard_task_runner.py:91} INFO - Job 2: Subtask ingest_movies
+[2025-11-05T03:53:05.338+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=119) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-05T03:53:05.339+0000] {standard_task_runner.py:63} INFO - Started process 128 to run task
+[2025-11-05T03:53:05.426+0000] {task_command.py:426} INFO - Running <TaskInstance: imdb_pipeline.ingest_movies scheduled__2025-11-04T00:00:00+00:00 [running]> on host 4f94d44a4e6f
+[2025-11-05T03:53:05.504+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='imdb_pipeline' AIRFLOW_CTX_TASK_ID='ingest_movies' AIRFLOW_CTX_EXECUTION_DATE='2025-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-04T00:00:00+00:00'
+[2025-11-05T03:53:05.505+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-05T03:53:05.566+0000] {python.py:237} INFO - Done. Returned value was: {"movieId":{"0":1,"1":2,"2":3,"3":4,"4":5,"5":6,"6":7,"7":8,"8":9,"9":10},"title":{"0":"Toy Story (1995)","1":"Jumanji (1995)","2":"Grumpier Old Men (1995)","3":"Waiting to Exhale (1995)","4":"Father of the Bride Part II (1995)","5":"Heat (1995)","6":"Sabrina (1995)","7":"Tom and Huck (1995)","8":"Sudden Death (1995)","9":"GoldenEye (1995)"},"genres":{"0":"Adventure|Animation|Children|Comedy|Fantasy","1":"Adventure|Children|Fantasy","2":"Comedy|Romance","3":"Comedy|Drama|Romance","4":"Comedy","5":"Action|Crime|Thriller","6":"Comedy|Romance","7":"Adventure|Children","8":"Action","9":"Action|Adventure|Thriller"}}
+[2025-11-05T03:53:05.567+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-05T03:53:05.587+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=imdb_pipeline, task_id=ingest_movies, run_id=scheduled__2025-11-04T00:00:00+00:00, execution_date=20251104T000000, start_date=20251105T035305, end_date=20251105T035305
+[2025-11-05T03:53:05.634+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-05T03:53:05.656+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-05T03:53:05.659+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

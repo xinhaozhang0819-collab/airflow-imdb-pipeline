@@ -1,0 +1,11 @@
+userId,movieId,rating,title,genres
+1,1,4.0,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+2,1,5.0,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+3,1,3.0,Toy Story (1995),Adventure|Animation|Children|Comedy|Fantasy
+1,3,4.0,Grumpier Old Men (1995),Comedy|Romance
+1,6,4.5,Heat (1995),Action|Crime|Thriller
+4,6,5.0,Heat (1995),Action|Crime|Thriller
+2,2,3.5,Jumanji (1995),Adventure|Children|Fantasy
+2,10,4.0,GoldenEye (1995),Action|Adventure|Thriller
+3,5,4.0,Father of the Bride Part II (1995),Comedy
+4,9,3.0,Sudden Death (1995),Action

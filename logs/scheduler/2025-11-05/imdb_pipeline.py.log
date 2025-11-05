@@ -1,0 +1,137 @@
+[2025-11-05T03:49:11.370+0000] {processor.py:161} INFO - Started process (PID=45) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:11.371+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:49:11.373+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:11.373+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:12.796+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:13.114+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.114+0000] {override.py:1829} INFO - Created Permission View: can delete on DAG:imdb_pipeline
+[2025-11-05T03:49:13.124+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.124+0000] {override.py:1829} INFO - Created Permission View: can edit on DAG:imdb_pipeline
+[2025-11-05T03:49:13.131+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.131+0000] {override.py:1829} INFO - Created Permission View: can read on DAG:imdb_pipeline
+[2025-11-05T03:49:13.132+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.132+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:49:13.294+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.294+0000] {dag.py:3118} INFO - Creating ORM DAG for imdb_pipeline
+[2025-11-05T03:49:13.306+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:13.306+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:49:13.333+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 1.969 seconds
+[2025-11-05T03:49:43.554+0000] {processor.py:161} INFO - Started process (PID=87) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:43.556+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:49:43.558+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:43.558+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:43.942+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:49:43.958+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:43.958+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:49:43.982+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:49:43.982+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:49:44.006+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.463 seconds
+[2025-11-05T03:50:14.205+0000] {processor.py:161} INFO - Started process (PID=99) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:14.206+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:50:14.208+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:14.208+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:14.535+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:14.807+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:14.807+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:50:14.823+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:14.822+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:50:14.842+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.645 seconds
+[2025-11-05T03:50:44.966+0000] {processor.py:161} INFO - Started process (PID=108) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:44.967+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:50:44.969+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:44.969+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:45.236+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:50:45.262+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:45.261+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:50:45.282+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:50:45.281+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:50:45.300+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.341 seconds
+[2025-11-05T03:51:15.542+0000] {processor.py:161} INFO - Started process (PID=110) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:15.543+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:51:15.544+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:15.544+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:15.759+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:15.783+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:15.782+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:51:15.799+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:15.799+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:51:15.815+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.280 seconds
+[2025-11-05T03:51:46.051+0000] {processor.py:161} INFO - Started process (PID=112) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:46.052+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:51:46.054+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:46.054+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:46.314+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:51:46.345+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:46.345+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:51:46.364+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:51:46.364+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:51:46.509+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.465 seconds
+[2025-11-05T03:52:16.704+0000] {processor.py:161} INFO - Started process (PID=115) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:16.705+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:52:16.707+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:16.707+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:16.956+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:16.982+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:16.981+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:52:17.009+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:17.008+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:52:17.037+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.340 seconds
+[2025-11-05T03:52:47.286+0000] {processor.py:161} INFO - Started process (PID=117) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:47.287+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:52:47.289+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:47.289+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:47.594+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:52:47.628+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:47.627+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:52:47.656+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:52:47.655+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-04 00:00:00+00:00, run_after=2025-11-05 00:00:00+00:00
+[2025-11-05T03:52:47.673+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.395 seconds
+[2025-11-05T03:53:17.856+0000] {processor.py:161} INFO - Started process (PID=159) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:17.858+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:53:17.860+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:17.860+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:18.186+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:18.213+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:18.213+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:53:18.235+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:18.235+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:53:18.254+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.408 seconds
+[2025-11-05T03:53:48.454+0000] {processor.py:161} INFO - Started process (PID=221) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:48.455+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:53:48.457+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:48.457+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:48.736+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:53:48.763+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:48.762+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:53:48.784+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:53:48.784+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:53:48.802+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.356 seconds
+[2025-11-05T03:54:19.018+0000] {processor.py:161} INFO - Started process (PID=223) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:19.019+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:54:19.020+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:19.020+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:19.251+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:19.275+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:19.275+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:54:19.292+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:19.292+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:54:19.443+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.432 seconds
+[2025-11-05T03:54:49.694+0000] {processor.py:161} INFO - Started process (PID=225) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:49.695+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:54:49.697+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:49.697+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:49.947+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:54:49.972+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:49.972+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:54:50.119+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:54:50.119+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:54:50.135+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.448 seconds
+[2025-11-05T03:55:20.351+0000] {processor.py:161} INFO - Started process (PID=227) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:20.353+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:55:20.355+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:20.354+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:20.617+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:20.646+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:20.645+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:55:20.664+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:20.664+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:55:20.683+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.339 seconds
+[2025-11-05T03:55:50.889+0000] {processor.py:161} INFO - Started process (PID=229) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:50.890+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:55:50.892+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:50.892+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:51.183+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:55:51.210+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:51.209+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:55:51.233+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:55:51.233+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:55:51.256+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.374 seconds
+[2025-11-05T03:56:21.441+0000] {processor.py:161} INFO - Started process (PID=231) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:21.442+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:56:21.443+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:21.443+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:21.777+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:21.801+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:21.801+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:56:21.821+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:21.821+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:56:21.841+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.408 seconds
+[2025-11-05T03:56:52.092+0000] {processor.py:161} INFO - Started process (PID=233) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:52.093+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:56:52.095+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:52.094+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:52.348+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:56:52.373+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:52.372+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:56:52.392+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:56:52.392+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:56:52.546+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.463 seconds
+[2025-11-05T03:57:22.747+0000] {processor.py:161} INFO - Started process (PID=235) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:22.748+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:57:22.750+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:22.750+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:23.002+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:23.028+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:23.027+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:57:23.160+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:23.160+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:57:23.175+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.437 seconds
+[2025-11-05T03:57:53.371+0000] {processor.py:161} INFO - Started process (PID=237) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:53.372+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:57:53.375+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:53.374+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:53.654+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:57:53.680+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:53.680+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:57:53.698+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:57:53.698+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:57:53.713+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.350 seconds
+[2025-11-05T03:58:23.930+0000] {processor.py:161} INFO - Started process (PID=239) to work on /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:58:23.931+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/imdb_pipeline.py for tasks to queue
+[2025-11-05T03:58:23.932+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:58:23.932+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:58:24.178+0000] {processor.py:840} INFO - DAG(s) 'imdb_pipeline' retrieved from /opt/airflow/dags/imdb_pipeline.py
+[2025-11-05T03:58:24.202+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:58:24.202+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-05T03:58:24.220+0000] {logging_mixin.py:188} INFO - [2025-11-05T03:58:24.220+0000] {dag.py:3954} INFO - Setting next_dagrun for imdb_pipeline to 2025-11-05 00:00:00+00:00, run_after=2025-11-06 00:00:00+00:00
+[2025-11-05T03:58:24.234+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/imdb_pipeline.py took 0.311 seconds
