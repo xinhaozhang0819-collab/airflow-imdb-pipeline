@@ -11,7 +11,7 @@ A minimal ETL pipeline orchestrated by **Apache Airflow** that:
 airflow-imdb-pipeline/
 ├─ dags/
 │ └─ imdb_pipeline.py
-├─ data/raw
+├─ data
 │ ├─ movies.csv
 │ └─ ratings.csv
 ├─ docker-compose.yml
@@ -28,18 +28,25 @@ Postgres will be exposed on host 5433.
 Airflow Web UI will be at http://localhost:8080 \
 Username: airflow \
 Password: airflow \
-If the UI does not open, check logs:
-docker compose logs --tail 200 airflow
 
-### 2) Trigger the DAG
+### 2) Running the IMDB ETL Pipeline
 
-- Open the Airflow UI → imdb_pipeline → click Trigger DAG.
+- After logging in, you will see the DAG named imdb_pipeline on the main page.
+- The DAG is initially paused. Toggle the switch on the left to turn it on (it should turn blue).
+- Click the ▶️ (Play) button on the right to trigger the DAG manually.
+- Wait until all tasks turn green — indicating success.
+You can view progress in Graph View or Tree View.
 
-- The pipeline stages: \
-`ingest_movies` / `ingest_ratings` \
-`transform_merge` \
-`load_to_postgres` (creates table `imdb_merged`) \
-`analyze` (prints top-5 titles to task logs) \
+#### Once completed:
+- The merged dataset will be stored in PostgreSQL (warehouse database). You can check it in your data folder.
+- You will be able to see outputs by clicking `analyze` and then click `Logs`. Then you will see something like this: 
+
+![Airflow DAG Screenshot](photo1.png)
+
+![Airflow DAG Screenshot](photo2.png)
+
+
+
 
 ### Notes
 
